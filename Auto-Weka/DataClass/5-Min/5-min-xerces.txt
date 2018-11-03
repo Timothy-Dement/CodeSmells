@@ -1,0 +1,52 @@
+Auto-WEKA result:
+best classifier: weka.classifiers.functions.Logistic
+arguments: [-R, 6.192781659402624E-5]
+attribute search: weka.attributeSelection.BestFirst
+attribute search arguments: [-D, 1, -N, 4]
+attribute evaluation: weka.attributeSelection.CfsSubsetEval
+attribute evaluation arguments: [-M]
+metric: errorRate
+estimated errorRate: 0.0
+training time on evaluation dataset: 0.027 seconds
+
+You can use the chosen classifier in your own code as follows:
+
+AttributeSelection as = new AttributeSelection();
+ASSearch asSearch = ASSearch.forName("weka.attributeSelection.BestFirst", new String[]{"-D", "1", "-N", "4"});
+as.setSearch(asSearch);
+ASEvaluation asEval = ASEvaluation.forName("weka.attributeSelection.CfsSubsetEval", new String[]{"-M"});
+as.setEvaluator(asEval);
+as.SelectAttributes(instances);
+instances = as.reduceDimensionality(instances);
+Classifier classifier = AbstractClassifier.forName("weka.classifiers.functions.Logistic", new String[]{"-R", "6.192781659402624E-5"});
+classifier.buildClassifier(instances);
+
+
+Correctly Classified Instances          17              100      %
+Incorrectly Classified Instances         0                0      %
+Kappa statistic                          1     
+Mean absolute error                      0.0133
+Root mean squared error                  0.0247
+Relative absolute error                  2.8884 %
+Root relative squared error              5.1662 %
+Total Number of Instances               17     
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 11  0 |  a = False
+  0  6 |  b = True
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     False
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     True
+Weighted Avg.    1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     
+
+Temporary run directories:
+/var/folders/2r/cttc4d_s4v14ckh2pf92h_w80000gn/T/autoweka6952393444584774874/
+
+
+For better performance, try giving Auto-WEKA more time.
+Tried 248 configurations; to get good results reliably you may need to allow for trying thousands of configurations.

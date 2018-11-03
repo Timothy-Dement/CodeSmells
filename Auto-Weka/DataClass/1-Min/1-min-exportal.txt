@@ -1,0 +1,45 @@
+Auto-WEKA result:
+best classifier: weka.classifiers.meta.Bagging
+arguments: [-P, 74, -I, 4, -S, 1, -W, weka.classifiers.rules.PART, --, -N, 4, -M, 44, -R, -B]
+attribute search: null
+attribute search arguments: []
+attribute evaluation: null
+attribute evaluation arguments: []
+metric: errorRate
+estimated errorRate: 0.15384615384615385
+training time on evaluation dataset: 0.019 seconds
+
+You can use the chosen classifier in your own code as follows:
+
+Classifier classifier = AbstractClassifier.forName("weka.classifiers.meta.Bagging", new String[]{"-P", "74", "-I", "4", "-S", "1", "-W", "weka.classifiers.rules.PART", "--", "-N", "4", "-M", "44", "-R", "-B"});
+classifier.buildClassifier(instances);
+
+
+Correctly Classified Instances          11               84.6154 %
+Incorrectly Classified Instances         2               15.3846 %
+Kappa statistic                          0     
+Mean absolute error                      0.4011
+Root mean squared error                  0.4141
+Relative absolute error                137.218  %
+Root relative squared error            113.854  %
+Total Number of Instances               13     
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+  0  2 |  a = False
+  0 11 |  b = True
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.000    0.000    ?          0.000    ?          ?        0.500     0.154     False
+                 1.000    1.000    0.846      1.000    0.917      ?        0.500     0.846     True
+Weighted Avg.    0.846    0.846    ?          0.846    ?          ?        0.500     0.740     
+
+Temporary run directories:
+/var/folders/2r/cttc4d_s4v14ckh2pf92h_w80000gn/T/autoweka7566766466637380921/
+
+
+For better performance, try giving Auto-WEKA more time.
+Tried 59 configurations; to get good results reliably you may need to allow for trying thousands of configurations.

@@ -1,0 +1,45 @@
+Auto-WEKA result:
+best classifier: weka.classifiers.lazy.KStar
+arguments: [-B, 19, -M, n]
+attribute search: null
+attribute search arguments: []
+attribute evaluation: null
+attribute evaluation arguments: []
+metric: errorRate
+estimated errorRate: 0.0
+training time on evaluation dataset: 0.0 seconds
+
+You can use the chosen classifier in your own code as follows:
+
+Classifier classifier = AbstractClassifier.forName("weka.classifiers.lazy.KStar", new String[]{"-B", "19", "-M", "n"});
+classifier.buildClassifier(instances);
+
+
+Correctly Classified Instances          11               91.6667 %
+Incorrectly Classified Instances         1                8.3333 %
+Kappa statistic                          0.8333
+Mean absolute error                      0.2185
+Root mean squared error                  0.2686
+Relative absolute error                 44.7609 %
+Root relative squared error             54.4716 %
+Total Number of Instances               12     
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 6 1 | a = False
+ 0 5 | b = True
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.857    0.000    1.000      0.857    0.923      0.845    0.986     0.982     False
+                 1.000    0.143    0.833      1.000    0.909      0.845    0.986     0.967     True
+Weighted Avg.    0.917    0.060    0.931      0.917    0.917      0.845    0.986     0.976     
+
+Temporary run directories:
+/var/folders/2r/cttc4d_s4v14ckh2pf92h_w80000gn/T/autoweka573517428543395651/
+
+
+For better performance, try giving Auto-WEKA more time.
+Tried 244 configurations; to get good results reliably you may need to allow for trying thousands of configurations.

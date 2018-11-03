@@ -1,0 +1,52 @@
+Auto-WEKA result:
+best classifier: weka.classifiers.meta.Vote
+arguments: [-R, AVG, -S, 1, -B, weka.classifiers.trees.RandomTree -M 13 -K 8 -depth 19 -N 0 -U, -B, weka.classifiers.rules.ZeroR, -B, weka.classifiers.functions.VotedPerceptron -I 7 -M 31352 -E 2.2565923435732977, -B, weka.classifiers.trees.RandomTree -M 7 -K 15 -depth 0 -N 0]
+attribute search: weka.attributeSelection.BestFirst
+attribute search arguments: [-D, 1, -N, 4]
+attribute evaluation: weka.attributeSelection.CfsSubsetEval
+attribute evaluation arguments: [-L]
+metric: errorRate
+estimated errorRate: 0.26865671641791045
+training time on evaluation dataset: 0.095 seconds
+
+You can use the chosen classifier in your own code as follows:
+
+AttributeSelection as = new AttributeSelection();
+ASSearch asSearch = ASSearch.forName("weka.attributeSelection.BestFirst", new String[]{"-D", "1", "-N", "4"});
+as.setSearch(asSearch);
+ASEvaluation asEval = ASEvaluation.forName("weka.attributeSelection.CfsSubsetEval", new String[]{"-L"});
+as.setEvaluator(asEval);
+as.SelectAttributes(instances);
+instances = as.reduceDimensionality(instances);
+Classifier classifier = AbstractClassifier.forName("weka.classifiers.meta.Vote", new String[]{"-R", "AVG", "-S", "1", "-B", "weka.classifiers.trees.RandomTree -M 13 -K 8 -depth 19 -N 0 -U", "-B", "weka.classifiers.rules.ZeroR", "-B", "weka.classifiers.functions.VotedPerceptron -I 7 -M 31352 -E 2.2565923435732977", "-B", "weka.classifiers.trees.RandomTree -M 7 -K 15 -depth 0 -N 0"});
+classifier.buildClassifier(instances);
+
+
+Correctly Classified Instances          98               73.1343 %
+Incorrectly Classified Instances        36               26.8657 %
+Kappa statistic                          0.3518
+Mean absolute error                      0.3338
+Root mean squared error                  0.3946
+Relative absolute error                 70.7398 %
+Root relative squared error             81.2612 %
+Total Number of Instances              134     
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 17 34 |  a = TRUE
+  2 81 |  b = FALSE
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.333    0.024    0.895      0.333    0.486      0.430    0.923     0.840     TRUE
+                 0.976    0.667    0.704      0.976    0.818      0.430    0.923     0.953     FALSE
+Weighted Avg.    0.731    0.422    0.777      0.731    0.692      0.430    0.923     0.910     
+
+Temporary run directories:
+/var/folders/2r/cttc4d_s4v14ckh2pf92h_w80000gn/T/autoweka5972589556018847553/
+
+
+For better performance, try giving Auto-WEKA more time.
+Tried 160 configurations; to get good results reliably you may need to allow for trying thousands of configurations.

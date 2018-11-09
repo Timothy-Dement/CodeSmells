@@ -1,0 +1,110 @@
+Auto-WEKA result:
+best classifier: weka.classifiers.functions.Logistic
+arguments: [-R, 9.415680300485174E-5]
+attribute search: weka.attributeSelection.BestFirst
+attribute search arguments: [-D, 1, -N, 5]
+attribute evaluation: weka.attributeSelection.CfsSubsetEval
+attribute evaluation arguments: [-M, -L]
+metric: areaUnderROC
+estimated areaUnderROC: 0.9994683678894205
+training time on evaluation dataset: 0.051 seconds
+
+You can use the chosen classifier in your own code as follows:
+
+AttributeSelection as = new AttributeSelection();
+ASSearch asSearch = ASSearch.forName("weka.attributeSelection.BestFirst", new String[]{"-D", "1", "-N", "5"});
+as.setSearch(asSearch);
+ASEvaluation asEval = ASEvaluation.forName("weka.attributeSelection.CfsSubsetEval", new String[]{"-M", "-L"});
+as.setEvaluator(asEval);
+as.SelectAttributes(instances);
+instances = as.reduceDimensionality(instances);
+Classifier classifier = AbstractClassifier.forName("weka.classifiers.functions.Logistic", new String[]{"-R", "9.415680300485174E-5"});
+classifier.buildClassifier(instances);
+
+
+Correctly Classified Instances         121               98.374  %
+Incorrectly Classified Instances         2                1.626  %
+Kappa statistic                          0.9673
+Mean absolute error                      0.0216
+Root mean squared error                  0.1089
+Relative absolute error                  4.3339 %
+Root relative squared error             21.8468 %
+Total Number of Instances              123     
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 65  1 |  a = FALSE
+  1 56 |  b = TRUE
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.985    0.018    0.985      0.985    0.985      0.967    0.999     1.000     FALSE
+                 0.982    0.015    0.982      0.982    0.982      0.967    0.999     0.999     TRUE
+Weighted Avg.    0.984    0.016    0.984      0.984    0.984      0.967    0.999     0.999     
+
+
+------- 10 BEST CONFIGURATIONS -------
+
+These are the 10 best configurations, as ranked by SMAC
+Please note that this list only contains configurations evaluated on at least 10 folds,
+If you need more configurations, please consider running Auto-WEKA for a longer time.
+
+Configuration #1:
+SMAC Score: -1.0
+Argument String:
+-_0__wekaclassifiersfunctionslogistic_00_R 9.415680300485174E-5 -aseval__wekaattributeselectioncfssubseteval_00_0_M REMOVED -aseval__wekaattributeselectioncfssubseteval_01_1_L REMOVED -assearch__wekaattributeselectionbestfirst_00_0_D 1 -assearch__wekaattributeselectionbestfirst_01_1_INT_N 5 -attributeeval weka.attributeSelection.CfsSubsetEval -attributesearch weka.attributeSelection.BestFirst -attributetime 60.0 -targetclass weka.classifiers.functions.Logistic 
+
+Configuration #2:
+SMAC Score: -1.0
+Argument String:
+-_0__wekaclassifierslazylwl_00_K_HIDDEN 1 -_0__wekaclassifierslazylwl_02_U_HIDDEN 1 -_0__wekaclassifierslazylwl_04_A weka.core.neighboursearch.LinearNNSearch -_1_W weka.classifiers.rules.DecisionTable -_1_W_0_DASHDASH REMOVED -_1_W_1__wekaclassifiersrulesdecisiontable_00_E rmse -_1_W_1__wekaclassifiersrulesdecisiontable_01_I REMOVE_PREV -_1_W_1__wekaclassifiersrulesdecisiontable_02_S weka.attributeSelection.BestFirst -_1_W_1__wekaclassifiersrulesdecisiontable_03_X 1 -aseval__wekaattributeselectioncfssubseteval_00_0_M REMOVED -aseval__wekaattributeselectioncfssubseteval_01_1_L REMOVED -assearch__wekaattributeselectionbestfirst_00_0_D 2 -assearch__wekaattributeselectionbestfirst_01_1_INT_N 3 -attributeeval weka.attributeSelection.CfsSubsetEval -attributesearch weka.attributeSelection.BestFirst -attributetime 60.0 -targetclass weka.classifiers.lazy.LWL 
+
+Configuration #3:
+SMAC Score: -1.0
+Argument String:
+-_0__wekaclassifiersbayesnaivebayes_00_K REMOVED -_0__wekaclassifiersbayesnaivebayes_01_D REMOVE_PREV -aseval__wekaattributeselectioncfssubseteval_00_0_M REMOVED -aseval__wekaattributeselectioncfssubseteval_01_1_L REMOVE_PREV -assearch__wekaattributeselectionbestfirst_00_0_D 0 -assearch__wekaattributeselectionbestfirst_01_1_INT_N 6 -attributeeval weka.attributeSelection.CfsSubsetEval -attributesearch weka.attributeSelection.BestFirst -attributetime 60.0 -targetclass weka.classifiers.bayes.NaiveBayes 
+
+Configuration #4:
+SMAC Score: -1.0
+Argument String:
+-_0__wekaclassifiersmetaattributeselectedclassifier_00_S weka.attributeSelection.BestFirst -_0__wekaclassifiersmetaattributeselectedclassifier_01_E weka.attributeSelection.CfsSubsetEval -_1_W weka.classifiers.trees.LMT -_1_W_0_DASHDASH REMOVED -_1_W_1__wekaclassifierstreeslmt_00_B REMOVED -_1_W_1__wekaclassifierstreeslmt_01_R REMOVE_PREV -_1_W_1__wekaclassifierstreeslmt_02_C REMOVED -_1_W_1__wekaclassifierstreeslmt_03_P REMOVE_PREV -_1_W_1__wekaclassifierstreeslmt_04_INT_M 62 -_1_W_1__wekaclassifierstreeslmt_05_W_HIDDEN 1 -_1_W_1__wekaclassifierstreeslmt_07_2_W 0.4681468062900074 -_1_W_1__wekaclassifierstreeslmt_08_A REMOVE_PREV -attributesearch NONE -attributetime 60.0 -targetclass weka.classifiers.meta.AttributeSelectedClassifier 
+
+Configuration #5:
+SMAC Score: -1.0
+Argument String:
+-_0__wekaclassifiersfunctionssimplelogistic_00_S REMOVE_PREV -_0__wekaclassifiersfunctionssimplelogistic_01_W_HIDDEN 0 -_0__wekaclassifiersfunctionssimplelogistic_02_1_W 0 -_0__wekaclassifiersfunctionssimplelogistic_04_A REMOVE_PREV -aseval__wekaattributeselectioncfssubseteval_00_0_M REMOVE_PREV -aseval__wekaattributeselectioncfssubseteval_01_1_L REMOVED -assearch__wekaattributeselectiongreedystepwise_00_0_C REMOVE_PREV -assearch__wekaattributeselectiongreedystepwise_01_1_B REMOVE_PREV -assearch__wekaattributeselectiongreedystepwise_02_2_R REMOVE_PREV -assearch__wekaattributeselectiongreedystepwise_03_4_INT_N 141 -attributeeval weka.attributeSelection.CfsSubsetEval -attributesearch weka.attributeSelection.GreedyStepwise -attributetime 60.0 -targetclass weka.classifiers.functions.SimpleLogistic 
+
+Configuration #6:
+SMAC Score: -1.0
+Argument String:
+-_0__wekaclassifierstreeslmt_00_B REMOVE_PREV -_0__wekaclassifierstreeslmt_01_R REMOVED -_0__wekaclassifierstreeslmt_02_C REMOVED -_0__wekaclassifierstreeslmt_03_P REMOVE_PREV -_0__wekaclassifierstreeslmt_04_INT_M 2 -_0__wekaclassifierstreeslmt_05_W_HIDDEN 0 -_0__wekaclassifierstreeslmt_06_1_W 0 -_0__wekaclassifierstreeslmt_08_A REMOVE_PREV -attributesearch NONE -attributetime 60.0 -targetclass weka.classifiers.trees.LMT 
+
+Configuration #7:
+SMAC Score: -1.0
+Argument String:
+-_0__wekaclassifierslazylwl_00_K_HIDDEN 1 -_0__wekaclassifierslazylwl_02_U_HIDDEN 1 -_0__wekaclassifierslazylwl_04_A weka.core.neighboursearch.LinearNNSearch -_1_W weka.classifiers.bayes.BayesNet -_1_W_0_DASHDASH REMOVED -_1_W_1__wekaclassifiersbayesbayesnet_00_D REMOVE_PREV -_1_W_1__wekaclassifiersbayesbayesnet_01_Q weka.classifiers.bayes.net.search.local.LAGDHillClimber -aseval__wekaattributeselectioncfssubseteval_00_0_M REMOVE_PREV -aseval__wekaattributeselectioncfssubseteval_01_1_L REMOVED -assearch__wekaattributeselectionbestfirst_00_0_D 1 -assearch__wekaattributeselectionbestfirst_01_1_INT_N 3 -attributeeval weka.attributeSelection.CfsSubsetEval -attributesearch weka.attributeSelection.BestFirst -attributetime 60.0 -targetclass weka.classifiers.lazy.LWL 
+
+Configuration #8:
+SMAC Score: -1.0
+Argument String:
+-_0__wekaclassifierstreeslmt_00_B REMOVE_PREV -_0__wekaclassifierstreeslmt_01_R REMOVED -_0__wekaclassifierstreeslmt_02_C REMOVED -_0__wekaclassifierstreeslmt_03_P REMOVED -_0__wekaclassifierstreeslmt_04_INT_M 3 -_0__wekaclassifierstreeslmt_05_W_HIDDEN 1 -_0__wekaclassifierstreeslmt_07_2_W 0.03141086070710797 -_0__wekaclassifierstreeslmt_08_A REMOVED -aseval__wekaattributeselectioncfssubseteval_00_0_M REMOVED -aseval__wekaattributeselectioncfssubseteval_01_1_L REMOVED -assearch__wekaattributeselectiongreedystepwise_00_0_C REMOVE_PREV -assearch__wekaattributeselectiongreedystepwise_01_1_B REMOVED -assearch__wekaattributeselectiongreedystepwise_02_2_R REMOVED -attributeeval weka.attributeSelection.CfsSubsetEval -attributesearch weka.attributeSelection.GreedyStepwise -attributetime 60.0 -targetclass weka.classifiers.trees.LMT 
+
+Configuration #9:
+SMAC Score: -1.0
+Argument String:
+-_0__wekaclassifierslazyibk_00_E REMOVED -_0__wekaclassifierslazyibk_01_INT_K 20 -_0__wekaclassifierslazyibk_02_X REMOVE_PREV -_0__wekaclassifierslazyibk_04_I REMOVED -aseval__wekaattributeselectioncfssubseteval_00_0_M REMOVE_PREV -aseval__wekaattributeselectioncfssubseteval_01_1_L REMOVE_PREV -assearch__wekaattributeselectiongreedystepwise_00_0_C REMOVE_PREV -assearch__wekaattributeselectiongreedystepwise_01_1_B REMOVED -assearch__wekaattributeselectiongreedystepwise_02_2_R REMOVE_PREV -assearch__wekaattributeselectiongreedystepwise_03_4_INT_N 135 -attributeeval weka.attributeSelection.CfsSubsetEval -attributesearch weka.attributeSelection.GreedyStepwise -attributetime 60.0 -targetclass weka.classifiers.lazy.IBk 
+
+Configuration #10:
+SMAC Score: -1.0
+Argument String:
+-_0__wekaclassifierstreeslmt_00_B REMOVE_PREV -_0__wekaclassifierstreeslmt_01_R REMOVED -_0__wekaclassifierstreeslmt_02_C REMOVED -_0__wekaclassifierstreeslmt_03_P REMOVE_PREV -_0__wekaclassifierstreeslmt_04_INT_M 5 -_0__wekaclassifierstreeslmt_05_W_HIDDEN 1 -_0__wekaclassifierstreeslmt_07_2_W 0.3307028613539461 -_0__wekaclassifierstreeslmt_08_A REMOVE_PREV -aseval__wekaattributeselectioncfssubseteval_00_0_M REMOVE_PREV -aseval__wekaattributeselectioncfssubseteval_01_1_L REMOVE_PREV -assearch__wekaattributeselectionbestfirst_00_0_D 1 -assearch__wekaattributeselectionbestfirst_01_1_INT_N 8 -attributeeval weka.attributeSelection.CfsSubsetEval -attributesearch weka.attributeSelection.BestFirst -attributetime 60.0 -targetclass weka.classifiers.trees.LMT 
+
+----END OF CONFIGURATION RANKING----
+
+Temporary run directories:
+/var/folders/2r/cttc4d_s4v14ckh2pf92h_w80000gn/T/autoweka6759625507884501244/
+
+
+For better performance, try giving Auto-WEKA more time.
